@@ -108,7 +108,29 @@ window.MODULOS = [
     id: "adhesivos-medicos", n: 3, ico: "🩹", color: "#e0f3ee", tinta: "#0b6b67",
     titulo: "Adhesivos médicos", formato: "Infografía", tiempo: "8 min",
     resumen: "Qué son, para qué sirven y cómo se clasifican según su fuerza de adhesión.",
-    puntos: ["Definición y beneficios", "Silicona, hidrocoloides, acrilatos y tela", "Tabla comparativa de los tipos de adhesivo", "Por qué importa elegir bien"],
+    puntos: ["Definición y beneficios", "Silicona, hidrocoloides, acrilatos y tela", "Comparativa de los tipos de adhesivo", "Por qué importa elegir bien"],
+    tabla: [
+      { tipo: "Látex de caucho natural (tela)", ico: "🧻", color: "#ffe9d6", base: "Tela elástica tradicional",
+        ventajas: ["Se utiliza desde hace más de 100 años.", "Alta fuerza de adhesión, combinada con soporte de tela tejida."],
+        desventajas: ["Puede presentar una adhesión muy agresiva sobre la piel.", "Puede causar daño cutáneo si se aplica o retira incorrectamente."],
+        clinica: ["Buena fuerza para fijar sondas, drenajes y dispositivos pesados.", "Debe usarse de forma selectiva, en dispositivos que requieran una fijación muy firme."] },
+      { tipo: "Acrilato", ico: "🩹", color: "#e4ecfb", base: "Espuma elástica, papel, plástico, seda y tela tradicional",
+        ventajas: ["Se utiliza ampliamente desde hace más de 50 años.", "Generalmente hipoalergénico."],
+        desventajas: ["Aunque es seguro, una selección, aplicación o retiro inadecuados pueden provocar dolor y daño cutáneo."],
+        clinica: ["Seleccionar el adhesivo con el nivel de adhesión apropiado.", "Una adhesión mayor a la necesaria aumenta el riesgo de lesión.", "Considerar su uso en dispositivos temporales y fijaciones de corta duración."] },
+      { tipo: "Silicona", ico: "🟢", color: "#e0f3ee", base: "Papel o plástico",
+        ventajas: ["Tecnología de adhesivo más reciente.", "Muy suave con la piel.", "Baja sensibilización cutánea.", "Tolera aplicaciones repetidas con menor daño cutáneo."],
+        desventajas: ["No se recomienda como fijación primaria de sistemas críticos o tubos."],
+        clinica: ["Excelente elección para fijar apósitos livianos y dispositivos en pacientes con piel frágil.", "Disminuye el riesgo de lesiones por retiro del adhesivo."] },
+      { tipo: "Hidrocoloides", ico: "🟡", color: "#fff4c9", base: "Película (film)",
+        ventajas: ["Se adhieren inicialmente a superficies secas.", "La adhesión aumenta con el tiempo debido al contenido de agua del hidrocoloide."],
+        desventajas: ["Se han reportado traumatismos cutáneos similares a los producidos por adhesivos acrílicos cuando permanecen más de 24 horas."],
+        clinica: ["Se utilizan como apósitos para heridas y como plataformas adhesivas para sondas o dispositivos médicos."] },
+      { tipo: "Hidrogeles y poliuretanos", ico: "💧", color: "#dcf0f7", base: "No se utilizan con frecuencia; seguir las instrucciones del fabricante",
+        ventajas: ["Indicados principalmente para el manejo de heridas."],
+        desventajas: ["Su uso depende de las indicaciones específicas del fabricante."],
+        clinica: ["Se emplean como apósitos para heridas y como plataforma adhesiva para sondas o dispositivos médicos."] }
+    ],
     html: `
 <div class="card">
   <span class="etiqueta">Definición</span>
@@ -129,35 +151,9 @@ window.MODULOS = [
 </div>
 
 <div class="card">
-  <h2>Tabla comparativa</h2>
-  <p class="intro">Ventajas, desventajas e implicaciones clínicas de cada tipo de adhesivo.</p>
-  <div class="tabla-scroll">
-  <table>
-    <thead><tr><th>Tipo de adhesivo</th><th>Base</th><th>Ventajas</th><th>Desventajas</th><th>Implicaciones clínicas</th></tr></thead>
-    <tbody>
-      <tr><td>Látex de caucho natural (tela)</td><td>Tela elástica tradicional</td>
-        <td><ul><li>Se utiliza desde hace más de 100 años.</li><li>Alta fuerza de adhesión, combinada con soporte de tela tejida.</li></ul></td>
-        <td><ul><li>Puede presentar una adhesión muy agresiva sobre la piel.</li><li>Puede causar daño cutáneo si se aplica o retira incorrectamente.</li></ul></td>
-        <td><ul><li>Buena fuerza para fijar sondas, drenajes y dispositivos pesados.</li><li>Debe usarse de forma selectiva, en dispositivos que requieran una fijación muy firme.</li></ul></td></tr>
-      <tr><td>Acrilato</td><td>Espuma elástica, papel, plástico, seda y tela tradicional</td>
-        <td><ul><li>Se utiliza ampliamente desde hace más de 50 años.</li><li>Generalmente hipoalergénico.</li></ul></td>
-        <td><ul><li>Aunque es seguro, una selección, aplicación o retiro inadecuados pueden provocar dolor y daño cutáneo.</li></ul></td>
-        <td><ul><li>Seleccionar el adhesivo con el nivel de adhesión apropiado.</li><li>Una adhesión mayor a la necesaria aumenta el riesgo de lesión.</li><li>Considerar su uso en dispositivos temporales y fijaciones de corta duración.</li></ul></td></tr>
-      <tr><td>Silicona</td><td>Papel o plástico</td>
-        <td><ul><li>Tecnología de adhesivo más reciente.</li><li>Muy suave con la piel.</li><li>Baja sensibilización cutánea.</li><li>Tolera aplicaciones repetidas con menor daño cutáneo.</li></ul></td>
-        <td><ul><li>No se recomienda como fijación primaria de sistemas críticos o tubos.</li></ul></td>
-        <td><ul><li>Excelente elección para fijar apósitos livianos y dispositivos en pacientes con piel frágil.</li><li>Disminuye el riesgo de lesiones por retiro del adhesivo.</li></ul></td></tr>
-      <tr><td>Hidrocoloides</td><td>Película (film)</td>
-        <td><ul><li>Se adhieren inicialmente a superficies secas.</li><li>La adhesión aumenta con el tiempo debido al contenido de agua del hidrocoloide.</li></ul></td>
-        <td><ul><li>Se han reportado traumatismos cutáneos similares a los producidos por adhesivos acrílicos cuando permanecen más de 24 horas.</li></ul></td>
-        <td><ul><li>Se utilizan como apósitos para heridas y como plataformas adhesivas para sondas o dispositivos médicos.</li></ul></td></tr>
-      <tr><td>Hidrogeles y poliuretanos</td><td>No se utilizan con frecuencia; seguir las instrucciones del fabricante</td>
-        <td><ul><li>Indicados principalmente para el manejo de heridas.</li></ul></td>
-        <td><ul><li>Su uso depende de las indicaciones específicas del fabricante.</li></ul></td>
-        <td><ul><li>Se emplean como apósitos para heridas y como plataforma adhesiva para sondas o dispositivos médicos.</li></ul></td></tr>
-    </tbody>
-  </table>
-  </div>
+  <h2>Comparativa de adhesivos</h2>
+  <p class="intro">Base, ventajas, desventajas e implicaciones clínicas de cada tipo. Puedes verla también como tabla en pantalla completa.</p>
+  <div id="tabla-adhesivos"></div>
   <div class="nota">La selección del adhesivo adecuado depende del tipo de piel, del dispositivo que se va a fijar, del tiempo de uso y del estado clínico del paciente.</div>
 </div>
 

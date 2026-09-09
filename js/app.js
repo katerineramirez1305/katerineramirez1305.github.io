@@ -109,6 +109,44 @@
     puntos.forEach(p => p.onclick = () => ir(+p.dataset.i));
   }
 
+  // ── Comparativa de adhesivos: fichas embebidas + tabla en pantalla completa ──
+  const COLS = [["ventajas", "Ventajas", "✅"], ["desventajas", "Desventajas", "⚠️"], ["clinica", "Implicaciones clínicas", "🩺"]];
+  function renderComparativa(m) {
+    const cont = $("#tabla-adhesivos"); if (!cont || !m.tabla) return;
+    const fichas = m.tabla.map(f => `
+      <article class="adh" style="--c:${f.color}">
+        <header><span class="ico">${f.ico}</span><div><h4>${f.tipo}</h4><small><b>Base:</b> ${f.base}</small></div></header>
+        <div class="adh-cols">${COLS.map(([k, t, i]) => `<section><h5>${i} ${t}</h5><ul>${f[k].map(x => `<li>${x}</li>`).join("")}</ul></section>`).join("")}</div>
+      </article>`).join("");
+    cont.innerHTML = `<div class="comparativa">${fichas}</div>
+      <div style="text-align:center;margin-top:16px"><button class="btn borde" type="button" id="abrir-tabla">⛶ Ver como tabla en pantalla completa</button></div>`;
+    $("#abrir-tabla").onclick = () => abrirModal(`
+      <table class="comparativa-tabla">
+        <thead><tr><th>Tipo de adhesivo</th><th>Base</th>${COLS.map(([, t]) => `<th>${t}</th>`).join("")}</tr></thead>
+        <tbody>${m.tabla.map(f => `<tr style="--c:${f.color}"><td data-col="Tipo de adhesivo"><span class="ico">${f.ico}</span> ${f.tipo}</td><td data-col="Base">${f.base}</td>${COLS.map(([k, t]) => `<td data-col="${t}"><ul>${f[k].map(x => `<li>${x}</li>`).join("")}</ul></td>`).join("")}</tr>`).join("")}</tbody>
+      </table>
+      <p class="fuente" style="text-align:center">La selección del adhesivo adecuado depende del tipo de piel, del dispositivo que se va a fijar, del tiempo de uso y del estado clínico del paciente.</p>`, "Comparativa de adhesivos médicos");
+  }
+
+  function abrirModal(html, titulo) {
+    cerrarModal();
+    const modal = document.createElement("div");
+    modal.className = "modal"; modal.id = "modal"; modal.setAttribute("role", "dialog"); modal.setAttribute("aria-modal", "true"); modal.setAttribute("aria-label", titulo);
+    modal.innerHTML = `<div class="modal-caja"><div class="modal-cab"><h3>${titulo}</h3><button class="modal-cerrar" type="button" aria-label="Cerrar">✕</button></div><div class="modal-cuerpo">${html}</div></div>`;
+    document.body.appendChild(modal); document.body.classList.add("sin-scroll");
+    requestAnimationFrame(() => modal.classList.add("abierto"));
+    modal.addEventListener("click", e => { if (e.target === modal || e.target.closest(".modal-cerrar")) cerrarModal(); });
+    document.addEventListener("keydown", escModal);
+    modal.querySelector(".modal-cerrar").focus();
+  }
+  function escModal(e) { if (e.key === "Escape") cerrarModal(); }
+  function cerrarModal() {
+    const modal = $("#modal"); if (!modal) return;
+    modal.classList.remove("abierto"); document.body.classList.remove("sin-scroll");
+    document.removeEventListener("keydown", escModal);
+    setTimeout(() => modal.remove(), 260);
+  }
+
   // ── Vistas ──────────────────────────────────────────────────────
   function renderInicio() {
     const primero = M[0];
@@ -159,11 +197,13 @@
     if (m.video) { const cont = $(`#video-${m.video === "videoPiel" ? "piel" : "tecnica"}`); if (cont) cont.innerHTML = bloqueVideo(m.video, m.titulo); }
     if (m.quiz) activarQuiz(m);
     if (m.diapos) renderDiapos(m);
+    if (m.tabla) renderComparativa(m);
     document.title = `${m.n}. ${m.titulo} · ${S.nombre}`;
   }
 
   // ── Navegación ──────────────────────────────────────────────────
   function navegar(id, forzar) {
+    cerrarModal();
     const m = M.find(x => x.id === id);
     if (m) { renderModulo(m); marcarVisto(m.id); } else { id = "inicio"; renderInicio(); }
     pintarPasos(id); pintarProgreso();
