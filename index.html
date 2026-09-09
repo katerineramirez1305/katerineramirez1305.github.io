@@ -3,18 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MARSICARE</title>
-<style>
-  body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,sans-serif;background:linear-gradient(135deg,#f9d5e5,#e8d5f5);color:#5a2a4a;text-align:center}
-  h1{font-size:2.4rem;letter-spacing:.1em;margin:0 0 .4rem}
-  p{margin:0;opacity:.8}
-</style>
+<title>MARSICARE · Aprende · Previene · Protege la piel</title>
+<meta name="description" content="MARSICARE es un espacio educativo para el personal de salud sobre la prevención de las lesiones cutáneas asociadas a adhesivos médicos (MARSI): la piel, los adhesivos, factores de riesgo, prevención, técnica de aplicación y retiro, y tratamiento.">
+<meta property="og:title" content="MARSICARE · Aprende · Previene · Protege la piel">
+<meta property="og:description" content="Ruta de aprendizaje de 9 pasos sobre la prevención de las lesiones cutáneas asociadas a adhesivos médicos (MARSI).">
+<meta property="og:image" content="img/logo.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e8f8a">
+<link rel="icon" href="img/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <div>
-    <h1>MARSICARE</h1>
-    <p>Aprende · Previene · Protege la piel</p>
-    <p style="margin-top:1rem;font-size:.85rem">Sitio en construcción</p>
+
+<header class="barra">
+  <a class="marca" href="#inicio"><img src="img/logo.png" alt=""><span>MARSI<b>CARE</b></span></a>
+  <div class="barra-der">
+    <span class="pill uni" title="Universidad del Valle">Universidad del Valle</span>
+    <a class="pill" href="#inicio">Inicio</a>
+    <button class="btn-menu" id="btn-menu" type="button" aria-label="Mostrar u ocultar la ruta">☰ Ruta</button>
   </div>
+</header>
+
+<div class="app">
+  <aside class="plegado" aria-label="Ruta de aprendizaje">
+    <h2>Ruta de aprendizaje</h2>
+    <p class="sub" id="prog-txt">Aún no has comenzado</p>
+    <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+    <nav class="pasos" id="pasos"></nav>
+  </aside>
+  <main id="contenido" aria-live="polite"></main>
+</div>
+
+<footer>
+  <span>MARSICARE · Aprende · Previene · Protege la piel</span>
+  <span id="pie-creditos"></span>
+  <a id="pie-estadisticas" class="oculto" href="#" target="_blank" rel="noopener">Estadísticas de visitas</a>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/contenido.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
