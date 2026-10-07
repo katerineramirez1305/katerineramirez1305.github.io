@@ -7,18 +7,26 @@ window.SITIO = {
   titulo: "Un lugar para aprender y transformar el cuidado de la piel",
   bienvenida: "Te damos la bienvenida a un espacio de aprendizaje diseñado para fortalecer el cuidado de la piel. Aquí encontrarás información clara, recursos educativos y evidencia científica sobre la prevención de las lesiones cutáneas asociadas al uso de adhesivos médicos (MARSI), para transformar el conocimiento en una práctica clínica más segura.",
   cita: "Cada intervención sobre la piel deja una huella. Que nuestras decisiones reflejen conocimiento, evidencia y compromiso, para que cada adhesivo sea una herramienta de cuidado y nunca una causa de daño.",
-  cierre: "Las lesiones cutáneas asociadas a adhesivos médicos (MARSI) son eventos adversos prevenibles. Su prevención mejora la seguridad del paciente y la calidad de la atención."
+  cierre: "Las lesiones cutáneas asociadas a adhesivos médicos (MARSI) son eventos adversos prevenibles. Su prevención mejora la seguridad del paciente y la calidad de la atención.",
+  autora: {
+    nombre: "Katherine Bernate Ramírez",
+    correo: "katherine.bernate@correounivalle.edu.co",
+    titulos: [
+      "Enfermera · Universidad Santiago de Cali",
+      "Estudiante de la Especialización en Cuidado a Personas con Heridas y Ostomías · Universidad del Valle"
+    ]
+  }
 };
 
 window.MODULOS = [
   // 1 ─────────────────────────────────────────────────────────────
   {
     id: "pretest", n: 1, ico: "🎯", color: "#fde2ec", tinta: "#a52a4b", eval: true,
-    titulo: "Pretest", formato: "Kahoot", tiempo: "5 min",
+    titulo: "Pretest", formato: "Cuestionario", tiempo: "5 min",
     resumen: "Siete preguntas para conocer tu punto de partida antes de comenzar el recorrido.",
     puntos: ["Qué significa la sigla MARSI", "Cuándo se considera una lesión MARSI", "Quiénes tienen mayor riesgo", "Qué adhesivo se recomienda en piel frágil"],
     quiz: {
-      kahoot: "kahootPretest",
+      tipo: "pretest",
       intro: "Responde con sinceridad: el objetivo es saber qué conoces hoy. Al final del recorrido volverás a evaluarte y podrás comparar tus resultados.",
       preguntas: [
         { p: "¿Qué significa la sigla MARSI?", o: ["Lesión por humedad asociada a vendajes.", "Lesión cutánea asociada al uso de adhesivos médicos.", "Infección de la piel por adhesivos.", "Reacción alérgica causada por medicamentos."], r: 1 },
@@ -175,108 +183,185 @@ window.MODULOS = [
   // 4 ─────────────────────────────────────────────────────────────
   {
     id: "marsi", n: 4, ico: "🔬", color: "#e4ecfb", tinta: "#2c4f9e",
-    titulo: "MARSI", formato: "Infografía", tiempo: "8 min",
-    resumen: "Qué son las lesiones cutáneas asociadas a adhesivos médicos y cómo se clasifican.",
-    puntos: ["Definición: eritema que persiste 30 minutos o más", "Cómo se produce la lesión", "Qué tan frecuentes son", "Clasificación: mecánicas, dermatitis y otras"],
+    titulo: "MARSI", formato: "Diapositivas narradas", tiempo: "15 min",
+    resumen: "Qué son las lesiones por adhesivos médicos, qué tan frecuentes son, cómo se clasifican y qué aumenta el riesgo.",
+    puntos: ["Definición y cómo se produce la lesión", "Epidemiología en adultos, niños y neonatos", "Clasificación: mecánicas, dermatitis y otras", "Factores de riesgo intrínsecos y extrínsecos"],
+    mazo: { etiqueta: "DIAPOSITIVA", narrada: true },
+    diapos: [
+      { ico: "🔬", sec: "Definición", t: "¿Qué es una MARSI?",
+        html: `<div class="d-par">
+          <div><p class="d-grande">Daño en la piel en el que el <strong>eritema</strong> u otra alteración cutánea <strong>persiste 30 minutos o más</strong> después de retirar el adhesivo.</p>
+          <p>MARSI viene del inglés <em>Medical Adhesive-Related Skin Injury</em>: lesión cutánea relacionada con adhesivos médicos.</p></div>
+          <div class="d-cifra rosa"><b>30</b><span>minutos o más</span><small>de eritema tras el retiro definen una MARSI</small></div>
+        </div>`,
+        voz: "Una MARSI es el daño en la piel en el que el eritema, u otra alteración cutánea, persiste treinta minutos o más después de retirar el adhesivo. La sigla viene del inglés: Medical Adhesive-Related Skin Injury, es decir, lesión cutánea relacionada con adhesivos médicos." },
+
+      { ico: "🧲", sec: "Definición", t: "¿Cómo se produce la lesión?",
+        html: `<div class="d-par">
+          <div><p class="d-grande">La lesión ocurre cuando la <strong>fuerza de adhesión</strong> del producto a la piel <strong>supera la fuerza de cohesión</strong> entre las células cutáneas.</p>
+          <p>Como resultado, se desprenden capas de la epidermis o la epidermis se separa de la dermis.</p></div>
+          <div class="d-balanza" aria-hidden="true">
+            <div class="fila"><span>Adhesión del producto</span><i style="--v:92%" class="rosa"></i></div>
+            <div class="fila"><span>Cohesión entre células</span><i style="--v:58%"></i></div>
+            <p>Cuando la primera barra gana, la piel cede.</p>
+          </div>
+        </div>`,
+        voz: "La lesión ocurre cuando la fuerza de adhesión del producto a la piel supera la fuerza de cohesión entre las células cutáneas. Como resultado, se desprenden capas de la epidermis, o la epidermis se separa de la dermis." },
+
+      { ico: "⚠️", sec: "Definición", t: "Una complicación frecuente y poco reconocida",
+        html: `<p class="d-grande">Ocurre en todos los entornos de atención en salud y en <strong>cualquier grupo de edad</strong> si no se usa la técnica adecuada.</p>
+        <p>Al retirar el adhesivo se eliminan capas superficiales de la piel junto con el producto. Esto puede:</p>
+        <div class="d-chips"><span>😣 Causar dolor</span><span>🦠 Aumentar el riesgo de infección</span><span>↔️ Ampliar el tamaño de la herida</span><span>⏳ Retrasar la cicatrización</span><span>💔 Reducir la calidad de vida</span></div>`,
+        voz: "Las lesiones por adhesivos médicos son una complicación frecuente, pero poco reconocida, que ocurre en todos los entornos de atención en salud. Aunque suelen asociarse a las edades extremas, pueden presentarse en cualquier grupo de edad si no se usa la técnica adecuada. Al retirar el adhesivo se eliminan capas superficiales de la piel junto con el producto. Esto puede causar dolor, aumentar el riesgo de infección, ampliar el tamaño de la herida y retrasar la cicatrización, lo que reduce la calidad de vida de los pacientes." },
+
+      { ico: "📊", sec: "Epidemiología", t: "Panorama general",
+        html: `<div class="d-cifras">
+          <div class="d-cifra"><b>20–41,9 %</b><small>Incidencia de MARSI reportada en entornos hospitalarios</small></div>
+          <div class="d-cifra rosa"><b>hasta 54,2 %</b><small>En poblaciones vulnerables: neonatos, niños y adultos mayores</small></div>
+          <div class="d-cifra menta"><b>Prevenibles</b><small>En gran medida, con guías clínicas basadas en la evidencia</small></div>
+        </div>`,
+        voz: "Las MARSI se pueden prevenir en gran medida mediante guías clínicas basadas en la evidencia. Sin embargo, los estudios han reportado incidencias de entre el veinte y el cuarenta y uno coma nueve por ciento en entornos hospitalarios. En poblaciones vulnerables, como neonatos, niños y adultos mayores, pueden llegar hasta el cincuenta y cuatro coma dos por ciento." },
+
+      { ico: "🏥", sec: "Epidemiología", t: "Adultos hospitalizados",
+        html: `<p>Son frecuentes en distintos contextos sanitarios, con amplia variación entre poblaciones y países.</p>
+        <div class="d-barras">
+          <div><span>UCI</span><i style="--v:39.2%"></i><b>39,2 %</b></div>
+          <div><span>Unidades coronarias</span><i style="--v:22.7%"></i><b>22,7 %</b></div>
+          <div><span>China · pacientes con PICC</span><i style="--v:19.7%"></i><b>19,7 %</b></div>
+          <div><span>Servicios no intensivos</span><i style="--v:13%"></i><b>13 %</b></div>
+          <div><span>Estados Unidos · dos UCI</span><i style="--v:13%"></i><b>≈13 %</b></div>
+          <div><span>China · dos UCI de Beijing (incidencia)</span><i style="--v:10.96%"></i><b>10,96 %</b></div>
+        </div>
+        <p class="fuente">Fuente: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9728873/" target="_blank" rel="noopener">PMC9728873</a></p>`,
+        voz: "En adultos hospitalizados se han descrito prevalencias del veintidós coma siete por ciento en unidades coronarias, del treinta y nueve coma dos por ciento en unidades de cuidado intensivo y del trece por ciento en servicios no intensivos. En China se reportó una incidencia del diez coma noventa y seis por ciento en dos unidades de cuidado intensivo de Beijing, y una prevalencia del diecinueve coma siete por ciento en pacientes con catéter PICC. En Estados Unidos, la prevalencia media fue de aproximadamente el trece por ciento en dos unidades de cuidado intensivo." },
+
+      { ico: "🇧🇷", sec: "Epidemiología", t: "Estudios en Brasil",
+        html: `<div class="d-cifras">
+          <div class="d-cifra"><b>25,9 %</b><small>Adultos en UCI. La maceración representó el 39,4 % de las lesiones y la dermatitis de contacto irritativa el 24,2 %</small></div>
+          <div class="d-cifra"><b>31 %</b><small>Adultos y adultos mayores con cáncer, críticamente enfermos</small></div>
+          <div class="d-cifra"><b>42 %</b><small>Cohorte de dos hospitales universitarios</small></div>
+          <div class="d-cifra rosa"><b>60,3 %</b><small>Niños sometidos a cirugía cardíaca congénita</small></div>
+        </div>
+        <p class="fuente">Fuente: <a href="https://pubmed.ncbi.nlm.nih.gov/41370537/" target="_blank" rel="noopener">PubMed 41370537</a></p>`,
+        voz: "En Brasil se encontró una prevalencia del veinticinco coma nueve por ciento en adultos de cuidado intensivo. La maceración representó el treinta y nueve coma cuatro por ciento de las lesiones, y la dermatitis de contacto irritativa, el veinticuatro coma dos por ciento. Otros estudios brasileños reportaron un treinta y uno por ciento en adultos y adultos mayores con cáncer críticamente enfermos, un cuarenta y dos por ciento en una cohorte de dos hospitales universitarios, y un sesenta coma tres por ciento en niños sometidos a cirugía cardíaca congénita." },
+
+      { ico: "👶", sec: "Epidemiología", t: "Niños y neonatos",
+        html: `<p>La población pediátrica presenta algunas de las frecuencias más elevadas.</p>
+        <div class="d-barras">
+          <div><span>Incidencia en otro estudio pediátrico (72,1 % fueron <em>skin stripping</em>)</span><i style="--v:61.1%" class="rosa"></i><b>61,1 %</b></div>
+          <div><span>Brasil · cirugía cardíaca infantil</span><i style="--v:60.3%" class="rosa"></i><b>60,3 %</b></div>
+          <div><span>Corea del Sur · UCI pediátrica</span><i style="--v:58.3%" class="rosa"></i><b>58,3 %</b></div>
+          <div><span>China · UCI pediátrica, prevalencia diaria media (rango 23,53–54,17 %)</span><i style="--v:37.15%" class="rosa"></i><b>37,15 %</b></div>
+          <div><span>UCI neonatales · metaanálisis de 2026 (IC95 %: 6–26 %)</span><i style="--v:15%" class="rosa"></i><b>15 %</b></div>
+        </div>
+        <div class="nota rosa">En pacientes de <strong>12 meses o menos</strong>, el riesgo de MARSI fue cerca de <strong>cinco veces mayor</strong> (OR 5,3; IC95 %: 1,6–17,6).</div>
+        <p class="fuente">Fuentes: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9728873/" target="_blank" rel="noopener">PMC9728873</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/40459034/" target="_blank" rel="noopener">PubMed 40459034</a></p>`,
+        voz: "La población pediátrica presenta algunas de las frecuencias más elevadas. En una unidad de cuidado intensivo pediátrico de China, la prevalencia diaria fue de entre el veintitrés y el cincuenta y cuatro por ciento, con una media del treinta y siete por ciento. Otro estudio encontró una incidencia del sesenta y uno coma uno por ciento, y el setenta y dos por ciento de esas lesiones fueron desprendimientos epidérmicos. En niños sometidos a cirugía cardíaca en Brasil, la incidencia fue del sesenta coma tres por ciento, y en una unidad pediátrica de Corea del Sur, del cincuenta y ocho coma tres por ciento. En las unidades neonatales, un metaanálisis de dos mil veintiséis estimó una incidencia agrupada del quince por ciento. Y en pacientes de doce meses o menos, el riesgo fue cerca de cinco veces mayor." },
+
+      { ico: "📈", sec: "Epidemiología", t: "Factores asociados en adultos críticos",
+        html: `<p>Cuántas veces aumenta la probabilidad de MARSI (razón de probabilidades, OR) en adultos críticamente enfermos:</p>
+        <div class="d-barras or">
+          <div><span>Edema</span><i style="--v:100%"></i><b>8,14</b></div>
+          <div><span>Sedación</span><i style="--v:74%"></i><b>6,02</b></div>
+          <div><span>Hipoalbuminemia</span><i style="--v:53%"></i><b>4,32</b></div>
+          <div><span>Riesgo nutricional</span><i style="--v:52%"></i><b>4,24</b></div>
+          <div><span>Ventilación mecánica</span><i style="--v:45%"></i><b>3,70</b></div>
+          <div><span>Estancia en UCI (por cada día)</span><i style="--v:13%"></i><b>1,07</b></div>
+        </div>
+        <p class="fuente">Fuente: <a href="https://pubmed.ncbi.nlm.nih.gov/39792523/" target="_blank" rel="noopener">PubMed 39792523</a></p>`,
+        voz: "En adultos críticamente enfermos, los principales factores asociados a las MARSI fueron el edema, con una razón de probabilidades de ocho coma catorce; la sedación, de seis coma cero dos; la hipoalbuminemia, de cuatro coma treinta y dos; el riesgo nutricional, de cuatro coma veinticuatro; la ventilación mecánica, de tres coma setenta; y cada día adicional de estancia en cuidado intensivo, de uno coma cero siete." },
+
+      { ico: "🩹", sec: "Clasificación", t: "Lesiones mecánicas",
+        html: `<div class="d-lesiones">
+          <figure><img src="img/lesiones/desprendimiento.jpg" alt="Desprendimiento epidérmico" loading="lazy"><figcaption><b>Desprendimiento cutáneo (epidérmico)</b>Remoción de una o más capas del estrato córneo al retirar una cinta o un apósito. Lesiones poco profundas e irregulares; la piel puede verse brillante, con eritema y ampollas.</figcaption></figure>
+          <figure><img src="img/lesiones/ampolla.jpg" alt="Ampolla por tensión" loading="lazy"><figcaption><b>Ampolla por tensión</b>Separación de la epidermis y la dermis por cizallamiento: la piel se distiende bajo una cinta rígida o una articulación en movimiento queda cubierta con una cinta no flexible.</figcaption></figure>
+          <figure><img src="img/lesiones/desgarro.jpg" alt="Desgarro cutáneo" loading="lazy"><figcaption><b>Desgarro cutáneo</b>Herida por cizallamiento, fricción o un golpe, que separa las capas de la piel. Puede ser de espesor parcial o completo.</figcaption></figure>
+        </div>`,
+        voz: "Las MARSI se clasifican en tres grupos. El primero son las lesiones mecánicas. El desprendimiento epidérmico es la remoción de una o más capas del estrato córneo al retirar una cinta o un apósito; las lesiones suelen ser poco profundas e irregulares, y la piel puede verse brillante. La ampolla por tensión es la separación de la epidermis y la dermis por una fuerza de cizallamiento, cuando la piel se distiende bajo una cinta rígida. Y el desgarro cutáneo es una herida causada por cizallamiento, fricción o un golpe, que separa las capas de la piel y puede ser de espesor parcial o completo." },
+
+      { ico: "🔥", sec: "Clasificación", t: "Dermatitis",
+        html: `<div class="d-lesiones dos">
+          <figure><img src="img/lesiones/irritante.jpg" alt="Dermatitis por contacto irritante" loading="lazy"><figcaption><b>Dermatitis por contacto irritante</b>Reacción no alérgica a un irritante químico. Área bien delimitada que coincide con la zona de exposición; puede verse enrojecida, hinchada y con vesículas. Suele durar poco.</figcaption></figure>
+          <figure><img src="img/lesiones/alergica.jpg" alt="Dermatitis alérgica" loading="lazy"><figcaption><b>Dermatitis alérgica</b>Respuesta inmunológica a un componente de la cinta o del soporte. Zona enrojecida, con vesículas y picazón, que puede extenderse más allá del área expuesta y durar hasta una semana.</figcaption></figure>
+        </div>`,
+        voz: "El segundo grupo son las dermatitis. La dermatitis por contacto irritante es una reacción no alérgica a un irritante químico: el área está bien delimitada, coincide con la zona de exposición y suele durar poco. La dermatitis alérgica es una respuesta inmunológica a un componente de la cinta o del soporte; produce enrojecimiento, vesículas y picazón, puede extenderse más allá del área expuesta y durar hasta una semana." },
+
+      { ico: "💧", sec: "Clasificación", t: "Otras lesiones",
+        html: `<div class="d-lesiones dos">
+          <figure><img src="img/lesiones/maceracion.jpg" alt="Maceración" loading="lazy"><figcaption><b>Maceración</b>Cambios por humedad atrapada contra la piel durante mucho tiempo. La piel se ve arrugada y blanca o gris; al ablandarse, se vuelve más permeable y vulnerable a la fricción y a los irritantes.</figcaption></figure>
+          <figure><img src="img/lesiones/foliculitis.jpg" alt="Foliculitis" loading="lazy"><figcaption><b>Foliculitis</b>Inflamación del folículo piloso por el afeitado o por bacterias atrapadas. Pequeñas elevaciones inflamadas, sin pus (pápulas) o con pus (pústulas).</figcaption></figure>
+        </div>`,
+        voz: "El tercer grupo reúne otras lesiones. La maceración aparece cuando la humedad queda atrapada contra la piel durante mucho tiempo: la piel se ve arrugada, blanca o gris, y se vuelve más vulnerable a la fricción y a los irritantes. La foliculitis es la inflamación del folículo piloso por el afeitado o por bacterias atrapadas, y se ve como pequeñas elevaciones inflamadas, con o sin pus." },
+
+      { ico: "🧍", sec: "Factores de riesgo", t: "Factores intrínsecos: del paciente",
+        html: `<div class="d-chips grande">
+          <span>👶👵 Extremos de edad: neonatos, prematuros y adultos mayores</span>
+          <span>🧬 Raza o etnia</span>
+          <span>🩺 Condiciones dermatológicas: eccema, dermatitis, úlceras exudativas crónicas, epidermólisis bullosa</span>
+          <span>🏥 Enfermedades de base: diabetes, infección, insuficiencia renal, inmunosupresión, insuficiencia venosa, hipertensión, várices periestomales</span>
+          <span>🍽️ Desnutrición</span>
+          <span>💧 Deshidratación</span>
+        </div>`,
+        voz: "Ahora, los factores de riesgo. Los factores intrínsecos son propios del paciente: los extremos de edad, como neonatos, prematuros y adultos mayores; la raza o etnia; las condiciones dermatológicas, como el eccema, la dermatitis, las úlceras exudativas crónicas o la epidermólisis bullosa; enfermedades de base como la diabetes, las infecciones, la insuficiencia renal, la inmunosupresión, la insuficiencia venosa o la hipertensión; la desnutrición y la deshidratación." },
+
+      { ico: "🌦️", sec: "Factores de riesgo", t: "Factores extrínsecos: del entorno y del cuidado",
+        html: `<div class="d-chips grande celeste">
+          <span>🧴 Sequedad de la piel por limpiadores fuertes, baño excesivo o baja humedad ambiental</span>
+          <span>💦 Exposición prolongada a la humedad</span>
+          <span>💊 Medicamentos: antiinflamatorios, anticoagulantes, quimioterapia, corticoides de uso prolongado</span>
+          <span>☢️ Radioterapia</span>
+          <span>☀️ Fotodaño (daño por el sol)</span>
+          <span>🔁 Aplicación y retiro reiterados de apósitos</span>
+          <span>✋ Técnica de adhesión inadecuada o repetida</span>
+        </div>`,
+        voz: "Los factores extrínsecos dependen del entorno y del cuidado: la sequedad de la piel por limpiadores fuertes, baño excesivo o baja humedad; la exposición prolongada a la humedad; algunos medicamentos, como antiinflamatorios, anticoagulantes, quimioterapéuticos y corticoides de uso prolongado; la radioterapia; el daño por el sol; y la aplicación y el retiro reiterados de apósitos con una técnica inadecuada." },
+
+      { ico: "✅", sec: "Para recordar", t: "Identificar el riesgo es el primer paso", cierre: true,
+        html: `<p class="d-grande">Cuantos más factores se combinan, mayor es el riesgo. En esos pacientes, la valoración de la piel y la elección del adhesivo deben ser especialmente cuidadosas.</p>
+        <p>En el siguiente paso, <strong>Prevención</strong>, encontrarás la <strong>escala ERLAM</strong> para medir ese riesgo y las ocho medidas para evitar la lesión.</p>`,
+        voz: "Cuantos más factores se combinan, mayor es el riesgo. En esos pacientes, la valoración de la piel y la elección del adhesivo deben ser especialmente cuidadosas. En el siguiente paso, Prevención, encontrarás la escala ERLAM para medir ese riesgo, y las ocho medidas para evitar la lesión." }
+    ],
     html: `
 <div class="card">
-  <span class="etiqueta">Definición</span>
-  <h2>¿Qué es una MARSI?</h2>
-  <p class="intro">Es el daño en la piel en el que aparece eritema (enrojecimiento) u otra alteración cutánea que <strong>persiste 30 minutos o más</strong> después de retirar el adhesivo.</p>
-  <p>La lesión ocurre cuando la fuerza de adhesión del producto a la piel supera la fuerza de cohesión entre las células cutáneas. Como resultado, se desprenden capas de la epidermis o la epidermis se separa de la dermis.</p>
-  <div class="nota">MARSI viene del inglés <em>Medical Adhesive-Related Skin Injury</em>: lesión cutánea relacionada con adhesivos médicos.</div>
+  <span class="etiqueta">Diapositivas narradas</span>
+  <h2>MARSI: definición, epidemiología, clasificación y factores de riesgo</h2>
+  <p class="intro">Toca <strong>Escuchar</strong> para oír la explicación de cada diapositiva. Avanza con las flechas, los puntos o deslizando en el teléfono.</p>
+  <div id="diapos-marsi"></div>
 </div>
 
 <div class="card">
-  <h2>Una complicación frecuente y poco reconocida</h2>
-  <p>Las lesiones por adhesivos médicos ocurren en todos los entornos de atención en salud. Aunque suelen asociarse a las edades extremas, pueden presentarse en <strong>cualquier grupo de edad</strong> si no se utiliza la técnica adecuada.</p>
-  <p>Al retirar el adhesivo, se eliminan capas superficiales de la piel junto con el producto. Esto no solo afecta la integridad de la piel: puede causar dolor, aumentar el riesgo de infección, ampliar el tamaño de la herida y retrasar la cicatrización, lo que reduce la calidad de vida del paciente.</p>
-  <div class="tarjetas">
-    <div class="tarjeta c-azul"><div class="ico">📊</div><h4>20 % a 41,9 %</h4><p>Incidencia de MARSI reportada en entornos hospitalarios.</p></div>
-    <div class="tarjeta c-rosa"><div class="ico">👶👵</div><h4>Hasta 54,2 %</h4><p>En poblaciones vulnerables como neonatos, niños y adultos mayores.</p></div>
-    <div class="tarjeta c-menta"><div class="ico">✅</div><h4>Prevenibles</h4><p>En gran medida, mediante guías clínicas basadas en la evidencia.</p></div>
+  <h2>Material de apoyo</h2>
+  <p class="intro">Las láminas originales, para consultarlas o imprimirlas.</p>
+  <div class="laminas">
+    <button type="button" class="lamina" data-img="img/clasificacion-marsi.png" data-t="Clasificación de las MARSI"><img src="img/clasificacion-marsi.png" alt="" loading="lazy"><span>Clasificación de las MARSI</span></button>
+    <button type="button" class="lamina" data-img="img/factores-riesgo.jpg" data-t="Factores de riesgo de MARSI"><img src="img/factores-riesgo.jpg" alt="" loading="lazy"><span>Factores de riesgo</span></button>
   </div>
-</div>
-
-<div class="card">
-  <h2>Clasificación de las MARSI</h2>
-  <p class="intro">Se agrupan en tres categorías según el mecanismo que las produce.</p>
-
-  <h3>1. Lesiones mecánicas</h3>
-  <div class="tarjetas">
-    <div class="tarjeta c-azul"><h4>Desprendimiento cutáneo (epidérmico)</h4><p>Remoción de una o más capas del estrato córneo al retirar una cinta o un apósito adhesivo. Las lesiones suelen ser poco profundas e irregulares; la piel puede verse brillante y acompañarse de eritema y ampollas.</p></div>
-    <div class="tarjeta c-azul"><h4>Ampolla por tensión</h4><p>Separación de la epidermis y la dermis por una fuerza de cizallamiento: la piel se distiende bajo una cinta o un apósito rígido, o una articulación en movimiento queda cubierta con una cinta no flexible.</p></div>
-    <div class="tarjeta c-azul"><h4>Desgarro cutáneo</h4><p>Herida causada por cizallamiento, fricción o un golpe, que separa las capas de la piel. Puede ser de espesor parcial o completo.</p></div>
-  </div>
-
-  <h3>2. Dermatitis</h3>
-  <div class="tarjetas">
-    <div class="tarjeta c-lila"><h4>Dermatitis por contacto irritante</h4><p>Reacción no alérgica a un irritante químico. El área afectada está bien delimitada y coincide con la zona de exposición; puede verse enrojecida, hinchada y con vesículas. Suele ser de corta duración.</p></div>
-    <div class="tarjeta c-lila"><h4>Dermatitis alérgica</h4><p>Respuesta inmunológica a un componente de la cinta o del soporte. Aparece como una zona enrojecida, con vesículas y picazón, que puede extenderse más allá del área de exposición y durar hasta una semana.</p></div>
-  </div>
-
-  <h3>3. Otras lesiones</h3>
-  <div class="tarjetas">
-    <div class="tarjeta c-celeste"><h4>Maceración</h4><p>Cambios por humedad atrapada contra la piel durante un tiempo prolongado. La piel se ve arrugada y de color blanco o gris; al ablandarse, se vuelve más permeable y susceptible a la fricción y a los irritantes.</p></div>
-    <div class="tarjeta c-celeste"><h4>Foliculitis</h4><p>Inflamación del folículo piloso causada por el afeitado o por bacterias atrapadas. Se ve como pequeñas elevaciones inflamadas, sin pus (pápulas) o con pus (pústulas).</p></div>
-  </div>
-
-  <details style="margin-top:16px">
-    <summary style="cursor:pointer;font-weight:700;color:var(--teal2)">Ver la clasificación ilustrada con imágenes clínicas</summary>
-    <img src="img/clasificacion-marsi.png" alt="Clasificación de las MARSI con fotografías clínicas de cada tipo de lesión" style="margin-top:12px;border-radius:12px;border:1px solid var(--borde)">
-    <p class="fuente">Material aportado por la autora.</p>
-  </details>
 </div>`
   },
 
   // 5 ─────────────────────────────────────────────────────────────
   {
-    id: "factores-de-riesgo", n: 5, ico: "⚠️", color: "#f3e6fb", tinta: "#6b2f9e",
-    titulo: "Factores de riesgo", formato: "Infografía", tiempo: "5 min",
-    resumen: "Lo que aumenta la probabilidad de una lesión: características del paciente y condiciones del entorno.",
-    puntos: ["Factores intrínsecos (propios del paciente)", "Factores extrínsecos (del entorno y del cuidado)", "Edad, enfermedades y estado nutricional", "Humedad, medicamentos y técnica"],
-    html: `
-<div class="card">
-  <span class="etiqueta">Infografía</span>
-  <h2>Factores que pueden aumentar el riesgo de MARSI</h2>
-  <p class="intro">Identificarlos antes de aplicar un adhesivo permite elegir mejor el producto y la técnica.</p>
-  <div class="dos-col">
-    <div class="col c-azul">
-      <h4>🧍 Factores intrínsecos <small style="font-weight:500;color:var(--gris)">(del paciente)</small></h4>
-      <ul>
-        <li><strong>Extremos de edad:</strong> neonatos, prematuros y adultos mayores.</li>
-        <li><strong>Raza o etnia.</strong></li>
-        <li><strong>Condiciones dermatológicas:</strong> eccema, dermatitis, úlceras exudativas crónicas, epidermólisis bullosa.</li>
-        <li><strong>Enfermedades de base:</strong> diabetes, infección, insuficiencia renal, inmunosupresión, insuficiencia venosa, hipertensión, várices periestomales.</li>
-        <li><strong>Desnutrición.</strong></li>
-        <li><strong>Deshidratación.</strong></li>
-      </ul>
-    </div>
-    <div class="col c-celeste">
-      <h4>🌦️ Factores extrínsecos <small style="font-weight:500;color:var(--gris)">(del entorno y del cuidado)</small></h4>
-      <ul>
-        <li><strong>Sequedad de la piel</strong> por limpiadores fuertes, baño excesivo o baja humedad ambiental.</li>
-        <li><strong>Exposición prolongada a la humedad.</strong></li>
-        <li><strong>Ciertos medicamentos:</strong> antiinflamatorios, anticoagulantes, quimioterapia y corticoides de uso prolongado.</li>
-        <li><strong>Radioterapia.</strong></li>
-        <li><strong>Fotodaño</strong> (daño por el sol).</li>
-        <li><strong>Aplicación y retiro reiterados</strong> de apósitos en la misma zona.</li>
-        <li><strong>Técnica de adhesión inadecuada o repetida.</strong></li>
-      </ul>
-    </div>
-  </div>
-  <div class="nota">Cuantos más factores se combinen, mayor es el riesgo. En estos pacientes, la valoración de la piel y la elección del adhesivo deben ser especialmente cuidadosas.</div>
-</div>`
-  },
-
-  // 6 ─────────────────────────────────────────────────────────────
-  {
-    id: "prevencion", n: 6, ico: "🛡️", color: "#fff4c9", tinta: "#8a6a00",
-    titulo: "Prevención", formato: "Diapositivas", tiempo: "12 min",
-    resumen: "Ocho medidas basadas en la evidencia para que la lesión no llegue a ocurrir.",
-    puntos: ["Valorar y preparar la piel", "Elegir el adhesivo adecuado", "Aplicar y retirar con la técnica correcta", "Vigilar, rotar y educar"],
+    id: "prevencion", n: 5, ico: "🛡️", color: "#fff4c9", tinta: "#8a6a00",
+    titulo: "Prevención", formato: "Escala y diapositivas", tiempo: "15 min",
+    resumen: "Mide el riesgo con la escala ERLAM y aplica ocho medidas basadas en la evidencia para que la lesión no llegue a ocurrir.",
+    puntos: ["Escala ERLAM: calcula el riesgo de MARSI", "Valorar y preparar la piel", "Elegir el adhesivo adecuado", "Aplicar y retirar con la técnica correcta", "Vigilar, rotar y educar"],
+    mazo: { etiqueta: "MEDIDA", cierreFinal: true },
+    erlam: {
+      fuente: "Lucena AF, et al. Development and validation of a risk assessment scale for medical adhesive-related skin injuries in hospitalized adults (ERLAM). Rev. Latino-Am. Enfermagem. 2025.",
+      doi: "10.1590/1518-8345.7403.4128",
+      dominios: [
+        { t: "Aspectos epidemiológicos y clínicos", c: "#e4ecfb", items: ["50 años o más", "Uso de tabaco", "Temperatura corporal de 37,5 °C o más", "Alergia previa a adhesivos", "Dermatitis de contacto", "Diabetes mellitus", "Paciente oncológico", "Hipoalbuminemia (albúmina sérica < 3,5 g/dL)", "Posoperatorio de cirugía mayor", "Antecedente de lesión por adhesivos", "Insuficiencia vascular", "Desnutrición", "En tratamiento con radioterapia"] },
+        { t: "Características de la piel en el sitio de fijación", c: "#e0f3ee", items: ["Edema moderado a grave (3+ o 4+)", "Disminución del turgor o la elasticidad de la piel", "Descamación de la piel", "Equimosis o hematomas previos", "Piel fina o sensible", "Sudoración frecuente"] },
+        { t: "Medicamentos en uso", c: "#f3e6fb", items: ["Antibiótico", "Corticoide", "Inmunosupresor", "Anticoagulante"] },
+        { t: "Dispositivos médicos en uso", c: "#fff4c9", items: ["Catéter venoso periférico", "Acceso venoso central", "Bolsa colectora de ostomía", "Tubo endotraqueal", "Drenaje", "Sonda enteral o nasogástrica", "Sonda vesical permanente", "Electrodo adhesivo"] },
+        { t: "Tipos de adhesivos en uso", c: "#fde2ec", items: ["Película transparente de poliuretano", "Cinta adhesiva de acrilato (p. ej., Medipore®, Durapore®)", "Cinta adhesiva de tela", "Esparadrapo", "Cinta microporosa", "Vendaje adhesivo elástico (p. ej., Tensoplast®)"] },
+        { t: "Sitio de fijación del adhesivo", c: "#dcf0f7", items: ["Región cervical", "Cara", "Abdomen", "Miembro superior", "Miembro inferior", "Región inguinal", "Región supralabial"] },
+        { t: "Uso del adhesivo", c: "#e0f3ee", items: ["Adhesivo que genera tensión sobre la piel", "Adhesivo colocado en un sitio recurrente"] },
+        { t: "Hospitalización", c: "#f3e6fb", items: ["Hospitalización de 16 días o más", "Procedimiento anestésico-quirúrgico de 2 horas o más en las últimas 24 horas"] }
+      ]
+    },
     diapos: [
-      { ico: "🔍", t: "Valoración previa de la piel", b: ["Evaluar el estado de la piel antes de aplicar cualquier adhesivo: fragilidad, humedad e irritación.", "Identificar los factores de riesgo intrínsecos y extrínsecos.", "No aplicar adhesivos sobre piel lesionada o irritada."] },
+      { ico: "🔍", t: "Valoración previa de la piel", b: ["Evaluar el estado de la piel antes de aplicar cualquier adhesivo: fragilidad, humedad e irritación.", "Identificar los factores de riesgo intrínsecos y extrínsecos. La escala ERLAM, más arriba, ayuda a medirlos.", "No aplicar adhesivos sobre piel lesionada o irritada."] },
       { ico: "🧼", t: "Preparación de la piel", b: ["Limpiar la piel con productos suaves, sin alcohol.", "Secar completamente antes de colocar el adhesivo.", "Aplicar una barrera protectora cutánea cuando la piel sea vulnerable."],
         d: "<p>Los productos de barrera cutánea forman una capa protectora entre la piel y el adhesivo. Se recomiendan para reducir el riesgo de MARSI y protegen la piel de fluidos corporales, exudados, orina y heces.</p><p>Suelen presentarse como películas de barrera líquidas (espumas, toallitas o aerosoles). Al aplicarlas, el disolvente se evapora y deja una capa transparente y transpirable. Los estudios clínicos han demostrado que reducen el eritema y la descamación tras el retiro de adhesivos, incluso en neonatos.</p><p>La humedad y los residuos (cremas, sudor) afectan la adherencia y aumentan el riesgo de daño al retirar el adhesivo. Por eso se recomiendan limpiadores suaves y evitar productos irritantes.</p>" },
       { ico: "🎯", t: "Selección adecuada del adhesivo", b: ["Elegir el producto según su finalidad, la zona anatómica y las condiciones del sitio de aplicación.", "Evitar adhesivos muy agresivos o con más adherencia de la necesaria.", "Usar el tamaño adecuado: no más grande de lo necesario."],
@@ -290,6 +375,13 @@ window.MODULOS = [
     ],
     html: `
 <div class="card">
+  <span class="etiqueta">Escala de valoración</span>
+  <h2>Escala ERLAM: ¿qué tan alto es el riesgo?</h2>
+  <p class="intro">Escala de Evaluación del Riesgo para el Desarrollo de Lesiones Cutáneas Relacionadas con Adhesivos Médicos, desarrollada para adultos hospitalizados. Marca cada factor presente en tu paciente: cada uno suma 1 punto.</p>
+  <div id="erlam"></div>
+</div>
+
+<div class="card">
   <span class="etiqueta">Diapositivas</span>
   <h2>Ocho medidas para prevenir las MARSI</h2>
   <p class="intro">Avanza con las flechas o toca los puntos. Algunas medidas tienen un apartado "Más detalle" con la explicación completa.</p>
@@ -297,9 +389,9 @@ window.MODULOS = [
 </div>`
   },
 
-  // 7 ─────────────────────────────────────────────────────────────
+  // 6 ─────────────────────────────────────────────────────────────
   {
-    id: "aplicacion-y-retiro", n: 7, ico: "🎬", color: "#dcf0f7", tinta: "#1a6a8a",
+    id: "aplicacion-y-retiro", n: 6, ico: "🎬", color: "#dcf0f7", tinta: "#1a6a8a",
     titulo: "Aplicación y retiro", formato: "Video", tiempo: "6 min",
     resumen: "La técnica correcta, paso a paso, para colocar y retirar adhesivos sin dañar la piel.",
     puntos: ["Piel limpia, seca y sin tensión", "Retiro lento y paralelo a la piel", "Sostener la piel mientras se retira", "Removedores, agua o vaselina cuando hagan falta"],
@@ -344,16 +436,43 @@ window.MODULOS = [
 </div>`
   },
 
-  // 8 ─────────────────────────────────────────────────────────────
+  // 7 ─────────────────────────────────────────────────────────────
   {
-    id: "tratamiento", n: 8, ico: "🩺", color: "#ece7e0", tinta: "#5c4a3a",
-    titulo: "Tratamiento", formato: "Flujograma", tiempo: "8 min",
-    resumen: "Qué hacer cuando la lesión ya ocurrió: valorar, eliminar la causa, limpiar, proteger y vigilar.",
-    puntos: ["Identificar y valorar la lesión y al paciente", "Retirar la causa y limpiar con solución salina", "¿Hay pérdida de piel? Barrera o apósito", "Controlar el dolor, vigilar la infección y documentar"],
+    id: "tratamiento", n: 7, ico: "🩺", color: "#ece7e0", tinta: "#5c4a3a",
+    titulo: "Tratamiento", formato: "Infografía", tiempo: "10 min",
+    resumen: "Qué hacer cuando la lesión ya ocurrió: el manejo de cada tipo de MARSI y la ruta general de atención.",
+    puntos: ["Manejo de las lesiones mecánicas", "Manejo de las dermatitis", "Manejo de la maceración", "Ruta general: valorar, limpiar, proteger y vigilar"],
+    lesiones: [
+      { grupo: "Lesiones mecánicas", color: "#e4ecfb", tinta: "#2c4f9e", items: [
+        { t: "Desprendimiento epidérmico", en: "Skin stripping", img: "desprendimiento", pasos: [
+          "Retirar el adhesivo con removedor, en dirección paralela a la piel y sin tracción.", "No repetir la aplicación del mismo adhesivo sobre la zona lesionada.", "Inspeccionar la zona lesionada.", "Evaluar el dolor y la presencia de exudado o signos de infección.", "Proteger la piel lesionada con apósitos atraumáticos: malla siliconada, apósitos lipocoloides o espumas de silicona.", "Manejar el dolor."] },
+        { t: "Lesión por tensión y ampolla", en: "Tension injury / blister", img: "ampolla", pasos: [
+          "Retirar el adhesivo con removedor, en dirección paralela a la piel y sin tracción.", "No retirar la capa superior de la ampolla: aumenta el riesgo de infección.", "Controlar el dolor.", "Usar apósitos atraumáticos, con técnicas correctas de aplicación y retiro.", "Si la ampolla está rota, realizar la higiene de la herida.", "Proteger la piel perilesional.", "Ampolla dolorosa o en zonas donde limite la movilidad: drenarla y conservar el techo, que funciona como apósito y favorece la cicatrización.", "Vigilar los signos de infección."] },
+        { t: "Desgarro cutáneo", en: "Skin tear", img: "desgarro", pasos: [
+          "Controlar el sangrado.", "Realizar la higiene de la herida.", "Reposicionar el colgajo cutáneo si es viable.", "Cubrir con apósitos atraumáticos: malla siliconada, apósitos lipocoloides o espumas de silicona.", "Elegir el apósito según el exudado.", "Manejar el dolor.", "Vigilar los signos de infección.", "Proteger la piel perilesional."] }
+      ] },
+      { grupo: "Dermatitis", color: "#f3e6fb", tinta: "#6b2f9e", items: [
+        { t: "Dermatitis de contacto irritativa", img: "irritante", pasos: [
+          "Retirar el adhesivo con removedor, en dirección paralela a la piel y sin tracción.", "Tratar el agente causal.", "Restaurar la barrera cutánea: emolientes, óxido de zinc y protectores cutáneos.", "Corticoide tópico de acción baja (hidrocortisona, dexametasona) cuando haya inflamación clínicamente significativa.", "Evitar nuevos irritantes."] },
+        { t: "Dermatitis alérgica de contacto", img: "alergica", pasos: [
+          "Identificar y retirar el alérgeno.", "Tratamiento antiinflamatorio tópico: corticoide de acción baja (hidrocortisona, dexametasona) cuando haya inflamación clínicamente significativa.", "Restaurar la barrera cutánea: emolientes, óxido de zinc y protectores cutáneos.", "Evitar la reexposición."] }
+      ] },
+      { grupo: "Otras lesiones", color: "#dcf0f7", tinta: "#1a6a8a", items: [
+        { t: "Maceración", img: "maceracion", pasos: [
+          "Retirar el adhesivo con removedor, en dirección paralela a la piel y sin tracción.", "Mantener la piel limpia y seca.", "Proteger la piel con protectores cutáneos."] }
+      ] }
+    ],
     html: `
 <div class="card">
+  <span class="etiqueta">Infografía</span>
+  <h2>Tratamiento según el tipo de lesión</h2>
+  <p class="intro">Toca cada lesión para ver los pasos de su manejo.</p>
+  <div id="lesiones"></div>
+</div>
+
+<div class="card">
   <span class="etiqueta">Flujograma</span>
-  <h2>Manejo de una lesión MARSI</h2>
+  <h2>Ruta general de manejo de una MARSI</h2>
   <p class="intro">Sigue el flujo de arriba hacia abajo. Los recuadros amarillos son preguntas de decisión: elige el camino SÍ o NO.</p>
   <div class="flujo">
     <div class="nodo inicio">Inicio</div><div class="flecha"></div>
@@ -399,14 +518,14 @@ window.MODULOS = [
 </div>`
   },
 
-  // 9 ─────────────────────────────────────────────────────────────
+  // 8 ─────────────────────────────────────────────────────────────
   {
-    id: "postest", n: 9, ico: "🏁", color: "#fde2ec", tinta: "#a52a4b", eval: true,
-    titulo: "Postest", formato: "Kahoot", tiempo: "5 min",
+    id: "postest", n: 8, ico: "🏁", color: "#fde2ec", tinta: "#a52a4b", eval: true,
+    titulo: "Postest", formato: "Cuestionario", tiempo: "5 min",
     resumen: "Siete preguntas para comprobar cuánto aprendiste en el recorrido.",
     puntos: ["Lesiones MARSI de tipo mecánico", "Adhesivo para piel frágil durante 72 horas", "Técnica segura de retiro", "Objetivo de la película barrera"],
     quiz: {
-      kahoot: "kahootPostest",
+      tipo: "postest",
       intro: "Llegaste al final del recorrido. Responde las siete preguntas y compara tu resultado con el del pretest.",
       preguntas: [
         { p: "¿Cuál de las siguientes lesiones corresponde a una MARSI de tipo mecánico?", o: ["Dermatitis alérgica.", "Desprendimiento epidérmico (skin stripping).", "Maceración.", "Foliculitis."], r: 1 },
