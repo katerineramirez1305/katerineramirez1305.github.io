@@ -54,6 +54,7 @@
   // ── Video ───────────────────────────────────────────────────────
   function bloqueVideo(claveVideo, titulo) {
     const id = C[claveVideo];
+    if (/\.mp4$/i.test(id)) return `<div class="video"><video src="${id}" poster="${id.replace(/\.mp4$/i, ".jpg")}" controls playsinline preload="metadata" aria-label="${titulo}"></video></div>`;
     if (id) return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${titulo}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
     return `<div class="video"><div><div class="play">▶</div><b>Video en preparación</b><p>Aquí se mostrará el video "${titulo}".</p><p>Mientras tanto, puedes leer el contenido completo más abajo.</p></div></div>`;
   }

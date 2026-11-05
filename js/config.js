@@ -6,9 +6,9 @@ window.CONFIG = {
   // Mientras esté vacío, los cuestionarios funcionan pero no se guardan.
   registro: "",
 
-  // Videos de YouTube: solo el identificador del video (lo que va después de "v=").
+  // Videos: una ruta a un .mp4 del sitio, o de YouTube solo el identificador del video (lo que va después de "v=").
   // Ejemplo: para https://www.youtube.com/watch?v=dQw4w9WgXcQ el identificador es "dQw4w9WgXcQ".
-  videoPiel: "",
+  videoPiel: "video/la-piel.mp4",
   videoTecnica: "",
 
   // Narración grabada de las diapositivas del paso MARSI (opcional).
